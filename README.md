@@ -8,7 +8,10 @@ venv/bin/activate
 
 pip install -r requirements.txt
 
-OPENAI_API_KEY=sk_XXXXXXXXXXXXXXXXXXXXX python3 voice_chat.py openai
+cp .env.template .env 
+vi .env    # Put your openai key in here.  You can ignore the AZURE stuff
+
+python3 voice_chat.py openai
 
 Use headphones; it needs echo cancelation of some sort to use speakers
 
