@@ -3,11 +3,15 @@
 From Rick:
 
 virtualenv venv
+
 venv/bin/activate
+
 pip install -r requirements.txt
+
 OPENAI_API_KEY=sk_XXXXXXXXXXXXXXXXXXXXX python3 voice_chat.py openai
 
 Use headphones; it needs echo cancelation of some sort to use speakers
+
 config.py defines the prompt and a tool `make_me_a_drink`.  Update that method to move the arm around.  
 
 
