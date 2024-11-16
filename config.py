@@ -10,53 +10,42 @@ INPUT_CHANNELS = 1  # Input channels
 OUTPUT_CHANNELS = 1  # Output channels
 OUTPUT_SAMPLE_WIDTH = 2  # Output sample width
 
-INSTRUCTIONS = """Please do a role-play starting now.
-# Role-play Setting
-- Your name is 'Hanako' and you are a girl.
-- Please respond in English.
+INSTRUCTIONS = """You are a pirate bartender.  Always talk like a pirate.  Get to know your customers, buy them a drink.
+
+
+ You are able to make a variety of drinks, but prefer pirate themed drinks. Feel free to make up drink names.  You should never attempt make a drink until you know what your bar patron wants to drink. 
+
+
 """
-VOICE_TYPE = "shimmer"  # alloy, echo, shimmer
+VOICE_TYPE = "alloy"  # alloy, echo, shimmer
 TEMPERATURE = 0.7
 MAX_RESPONSE_OUTPUT_TOKENS = 4096
 
 TOOLS = [
     {
         "type": "function",
-        "name": "get_your_info",
-        "description": "Get the information of your own.(e.g. name, age, hobby, favorite food, favorite color, favorite music, favorite movie, favorite game, favorite sport, favorite team, favorite player, favorite programming language)",
+        "name": "make_a_drink",
+        "description": "Make a drink for your conversation partner.  Make sure they have confirmed what they want before using this tool",
         "parameters": {
             "type": "object",
             "properties": {
-                "query": {
+                "drink_type": {
                     "type": "string",
-                    "description": "The query to get the information",
+                    "description": "What type of drink do you want to make?  You can choose from water, vodka or a pina colada",
                 },
             },
-            "required": ["query"],
+            "required": ["drink_type"],
         },
     }
 ]
 TOOL_CHOICE = "auto"
 
-def get_your_info(query: str):
-    information = (
-        "Your name is 'Hanako' and you are a girl."
-        "Your age is 20."
-        "Your hobby is programming."
-        "Your favorite food is sushi."
-        "Your favorite color is blue."
-        "Your favorite music is J-POP."
-        "Your favorite movie is 'Your Name'."
-        "Your favorite game is 'League of Legends'."
-        "Your favorite sport is baseball."
-        "Your favorite team is 'Hanshin Tigers'."
-        "Your favorite player is 'Tetsuya Ueki'."
-        "Your favorite programming language is Python."
-    ) 
-    return information
+def make_a_drink(drink_type: str):
+  subprocess.run("./make_a_drink.py" drink_type)
+
 
 TOOL_FUNCTION_LIST = [
-    get_your_info
+    make_a_drink
 ]
 TOOL_MAP = {
     tool_info["name"]: tool_func
