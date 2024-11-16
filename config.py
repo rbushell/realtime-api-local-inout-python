@@ -1,5 +1,5 @@
 import pyaudio
-
+import subprocess
 
 INPUT_SAMPLE_RATE = 24000  # Input sample rate
 INPUT_CHUNK_SIZE = 2048  # Input chunk size
@@ -41,7 +41,12 @@ TOOLS = [
 TOOL_CHOICE = "auto"
 
 def make_a_drink(drink_type: str):
-  subprocess.run("./make_a_drink.py" drink_type)
+   print("\n" * 5)
+   print(f"moving the arm to make a {drink_type}")
+   print("\n" * 5)
+   return "ok"
+
+
 
 
 TOOL_FUNCTION_LIST = [

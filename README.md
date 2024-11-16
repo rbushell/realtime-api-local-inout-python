@@ -1,5 +1,21 @@
 # README
 
+From Rick:
+
+virtualenv venv
+venv/bin/activate
+pip install -r requirements.txt
+OPENAI_API_KEY=sk_XXXXXXXXXXXXXXXXXXXXX python3 voice_chat.py openai
+
+Use headphones; it needs echo cancelation of some sort to use speakers
+config.py defines the prompt and a tool `make_me_a_drink`.  Update that method to move the arm around.  
+
+
+
+
+
+---
+
 ## Overview
 This code has been modified to enable conversations with a real-time API using your local microphone and speakers, based on [Azure-Samples/aoai-realtime-audio-sdk](https://github.com/Azure-Samples/aoai-realtime-audio-sdk/tree/main/python).  
 `voice_chat.py` is created based on [aoai-realtime-audio-sdk/python/samples/low_level_sample.py](https://github.com/Azure-Samples/aoai-realtime-audio-sdk/blob/main/python/samples/low_level_sample.py).  
